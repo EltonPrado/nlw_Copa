@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --card-title-border-color: #746615;
+  --card-color-primary: #f7dd43;
+  --card-bg-color: #1d1c19;
+  --bg: url(./assets/bg-yellow.svg);
+}
+
+body.blue {
+  --card-title-border-color: #338af3;
+  --card-color-primary: #338af3;
+  --card-bg-color: #202030;
+  --bg: url(./assets/bg-blue.svg);
+}
+
+body.green {
+  --card-title-border-color: #047c3f;
+  --card-color-primary: #047c3f;
+  --card-bg-color: #1a1f1b;
+  --bg: url(./assets/bg-green.svg);
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background-color: #121214;
+  background-image: var(--bg);
+  /* O eixo X e Y está agrupado no background-position */
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body * {
+  font-family: "Roboto", sans-serif;
+}
+
+#app {
+  width: fit-content;
+  margin: auto;
+  padding-top: 52px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 63px;
+}
+
+#cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.card,
+.card-group {
+  padding: 32px 23px;
+  text-align: center;
+
+  background: var(--card-bg-color);
+  border-bottom: 2px solid var(--card-color-primary);
+  border-radius: 6px;
+}
+
+.card-group {
+  background: #202024;
+  border-bottom: 2px solid #e1e1e6;
+}
+
+.card h2,
+.card-group h2 {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 16px;
+  border: 1px solid var(--card-title-border-color);
+  border-radius: 6px;
+
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 53px;
+
+  color: #f7dd43;
+}
+
+.card-group h2 {
+  color: #e1e1e6;
+  border: 1px solid #e1e1e6;
+}
+
+.card h2 span,
+.card-group h2 span {
+  color: #e1e1e6;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.card-group h2 span {
+  font-size: 20px;
+}
+
+.card ul,
+.card-group ul {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 270px;
+}
+
+.card ul li,
+.card-group ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* li + li - seletor que nos diz para: pegar o li anterior a ele tem o li */
+.card ul li + li,
+.card-group ul li + li {
+  padding-top: 24px;
+  border-top: 1px solid #323238;
+}
+
+.card ul li strong {
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 125%;
+
+  color: #e1e1e6;
+}
+
+.card-group ul li strong {
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 125%;
+
+  color: #e1e1e6;
+}
+
+.card h2:hover,
+.card ul li strong:hover,
+.card ul li img:hover {
+  transform: scale(1.1);
+}
+
+.card h2:hover,
+.card ul li strong:hover,
+.card ul li img:hover {
+  transition: transform 0.3s;
+}
+
+.card {
+  opacity: 0;
+  animation: appear 2s forwards;
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 700px) {
+  #cards {
+    /* 
+    - O max-width aqui vai ser de acordo com a quantidade de cards que eu quero ao lado do outro 
+    - A soma foi feita em cima do tamanho do cartão - 316px + 32px de gap (espaçamento) entre eles
+    */
+    max-width: 1360px;
+    flex-direction: row;
+    /* Essa propriedade impede que o conteúdo transborde */
+    flex-wrap: wrap;
+  }
+}
